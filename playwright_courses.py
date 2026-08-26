@@ -1,4 +1,5 @@
 from playwright.sync_api import sync_playwright
+from playwright.sync_api import expect
 
 with sync_playwright() as playwright:
     browser = playwright.chromium.launch(headless=False)
@@ -27,6 +28,19 @@ with sync_playwright() as playwright:
     context = browser.new_context(storage_state="browser-state.json")
     page = context.new_page()
 
-    page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/dashboard")
+    page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses")
 
-    page.wait_for_timeout(5000)
+    courses_headline = page.get_by_test_id('courses-list-toolbar-title-text')
+    expect(courses_headline).to_be_visible()
+    expect(courses_headline).to_have_text("Courses")
+
+    courses_empty_list_icon = page.get_by_test_id('courses-list-empty-view-icon')
+    expect(courses_empty_list_icon).to_be_visible()
+
+    courses_empty_list_title = page.get_by_test_id('courses-list-empty-view-title-text')
+    expect(courses_empty_list_title).to_be_visible()
+    expect(courses_empty_list_title).to_have_text("There is no results")
+
+    courses_empty_list_description = page.get_by_test_id('courses-list-empty-view-description-text')
+    expect(courses_empty_list_description).to_be_visible()
+    expect(courses_empty_list_description).to_have_text("Results from the load test pipeline will be displayed here")
