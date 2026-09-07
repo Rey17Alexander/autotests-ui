@@ -82,7 +82,7 @@ class CoursesListPage(BasePage):
 
         expect(self.course_max_score.nth(index)).to_be_visible()
         expect(self.course_max_score.nth(index)).to_have_text(
-            f"Msx score: {max_score}"
+            f"Max score: {max_score}"
         )
 
         expect(self.course_min_score.nth(index)).to_be_visible()
