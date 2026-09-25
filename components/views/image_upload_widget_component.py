@@ -18,7 +18,7 @@ class ImageUploadWidgetComponent(BaseComponent):
         self.preview_image = Image(
             page,
             f"{identifier}-image-upload-widget-preview-image",
-            "Preview image",
+            "Preview",
         )
 
         self.image_upload_info_icon = Icon(
@@ -48,7 +48,7 @@ class ImageUploadWidgetComponent(BaseComponent):
             "Remove button",
         )
         self.upload_input = FileInput(
-            page, f"{identifier}-image-upload-widget-input", "Upload input"
+            page, f"{identifier}-image-upload-widget-input", "Upload"
         )
 
     def check_visible(self, is_image_uploaded: bool = False):
