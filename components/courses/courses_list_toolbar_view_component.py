@@ -1,5 +1,7 @@
 import re
 
+import allure
+
 from components.base_component import BaseComponent
 from elements.button import Button
 from elements.text import Text
@@ -14,6 +16,7 @@ class CoursesListToolbarViewComponent(BaseComponent):
             page, "courses-list-toolbar-create-course-button", "Create course"
         )
 
+    @allure.step("Check visible courses list toolbar view")
     def check_visible(self):
         self.title.check_visible()
         self.title.check_have_text("Courses")
