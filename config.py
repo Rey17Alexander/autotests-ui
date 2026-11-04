@@ -41,7 +41,7 @@ class Settings(BaseSettings):
     def initialize(cls) -> Self:
         videos_dir = DirectoryPath("./videos")
         tracing_dir = DirectoryPath("./tracing")
-        browser_state_file = DirectoryPath("browser_state.json")
+        browser_state_file = DirectoryPath("browser-state.json")
 
         videos_dir.mkdir(exist_ok=True)
         tracing_dir.mkdir(exist_ok=True)
@@ -52,6 +52,9 @@ class Settings(BaseSettings):
             tracing_dir=tracing_dir,
             browser_state_file=browser_state_file,
         )
+
+    def get_base_url(self) -> str:
+        return f"{self.app_url}/"
 
 
 settings = Settings.initialize()
