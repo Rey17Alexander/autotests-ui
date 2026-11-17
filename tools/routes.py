@@ -7,3 +7,6 @@ class AppRoute(str, Enum):
     DASHBOARD = "./#/dashboard"
     COURSES = "./#/courses"
     COURSES_CREATE = "./#/courses/create"
+
+    def __str__(self):
+        return self.value
